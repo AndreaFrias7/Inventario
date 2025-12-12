@@ -1,0 +1,147 @@
+.dashboard-container {
+  padding: 0;
+}
+
+.dashboard-container h1 {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.metrics-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.metric-card {
+  text-align: center;
+  padding: 24px !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(136, 14, 79, 0.18) !important;
+}
+
+.metric-card.productos {
+  border-top: 4px solid #d81b60;
+}
+
+.metric-card.categorias {
+  border-top: 4px solid #f06292;
+}
+
+.metric-card.activos {
+  border-top: 4px solid #ec407a;
+}
+
+.metric-card.inactivos {
+  border-top: 4px solid #f48fb1;
+}
+
+.metric-label {
+  font-size: 1.2rem;
+  color: #6d4c41;
+  margin-bottom: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.metric-value {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #880e4f;
+}
+
+.calendar-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-card mat-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px !important;
+}
+
+.selected-date {
+  margin-top: 20px;
+  text-align: center;
+  padding: 16px;
+  background-color: rgba(216, 27, 96, 0.05);
+  border-radius: 12px;
+  width: 100%;
+}
+
+.selected-date p:first-child {
+  font-size: 0.9rem;
+  color: #6d4c41;
+  margin-bottom: 8px;
+}
+
+.date-display {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #880e4f;
+}
+
+.stock-card {
+  margin-top: 32px;
+}
+
+.elegant-table {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.stock-badge {
+  background-color: #f06292;
+  color: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.empty-state {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.empty-state p {
+  font-size: 1.2rem;
+  color: #880e4f;
+  padding: 32px;
+}
+
+@media (max-width: 968px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .metrics-section {
+    grid-template-columns: 1fr 1fr;
+  }
+}

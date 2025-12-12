@@ -1,0 +1,176 @@
+/* Importar tema de Angular Material */
+@import '@angular/material/prebuilt-themes/pink-bluegrey.css';
+
+/* Importar fuente Bodoni MT */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
+
+/* Reset y estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Cormorant Garamond', serif;
+  background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 50%, #fce4ec 100%);
+  background-attachment: fixed;
+}
+
+body {
+  color: #6d4c41;
+}
+
+/* Títulos con fuente elegante */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  color: #880e4f;
+  letter-spacing: 1px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+/* Botones personalizados */
+.mat-mdc-raised-button.mat-primary {
+  background-color: #d81b60 !important;
+  color: white !important;
+}
+
+.mat-mdc-raised-button.mat-primary:hover {
+  background-color: #c2185b !important;
+}
+
+.mat-mdc-raised-button.mat-warn {
+  background-color: #f06292 !important;
+}
+
+/* Tarjetas con estilo suave */
+.mat-mdc-card {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 24px rgba(136, 14, 79, 0.12) !important;
+  backdrop-filter: blur(10px);
+}
+
+/* Tablas elegantes */
+.mat-mdc-table {
+  background: transparent !important;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.mat-mdc-header-cell {
+  color: #880e4f !important;
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+  letter-spacing: 0.5px;
+}
+
+.mat-mdc-cell {
+  color: #6d4c41 !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+}
+
+.mat-mdc-row:hover {
+  background-color: rgba(248, 187, 208, 0.3) !important;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  color: #880e4f !important;
+}
+
+/* Campos de formulario */
+.mat-mdc-form-field {
+  font-family: 'Cormorant Garamond', serif !important;
+}
+
+/* ESTILOS PERSONALIZADOS DEL CALENDARIO */
+.mat-calendar {
+  font-family: 'Cormorant Garamond', serif !important;
+  background-color: transparent !important;
+}
+
+.mat-calendar-header {
+  background-color: #d81b60 !important;
+  color: white !important;
+  padding: 16px !important;
+  border-radius: 12px 12px 0 0 !important;
+}
+
+.mat-calendar-controls {
+  margin: 0 !important;
+}
+
+.mat-calendar-period-button,
+.mat-calendar-arrow {
+  color: white !important;
+}
+
+.mat-calendar-table-header th {
+  color: #880e4f !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  padding: 12px 0 !important;
+}
+
+.mat-calendar-body-cell {
+  position: relative;
+  height: 48px !important;
+  width: 48px !important;
+}
+
+.mat-calendar-body-cell-content {
+  width: 40px !important;
+  height: 40px !important;
+  line-height: 40px !important;
+  border-radius: 50% !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  color: #6d4c41 !important;
+  transition: all 0.3s ease !important;
+}
+
+.mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover .mat-calendar-body-cell-content {
+  background-color: rgba(216, 27, 96, 0.1) !important;
+  transform: scale(1.1) !important;
+}
+
+.mat-calendar-body-selected {
+  background-color: #d81b60 !important;
+  color: white !important;
+  font-weight: 700 !important;
+}
+
+.mat-calendar-body-today:not(.mat-calendar-body-selected) {
+  border: 2px solid #f06292 !important;
+}
+
+.mat-calendar-body-disabled .mat-calendar-body-cell-content {
+  color: #d3d3d3 !important;
+}
+
+/* Utilidades */
+.full-width {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-1 { margin-top: 8px; }
+.mt-2 { margin-top: 16px; }
+.mt-3 { margin-top: 24px; }
+
+.mb-1 { margin-bottom: 8px; }
+.mb-2 { margin-bottom: 16px; }
+.mb-3 { margin-bottom: 24px; }
+
+.p-1 { padding: 8px; }
+.p-2 { padding: 16px; }
+.p-3 { padding: 24px; }

@@ -1,0 +1,26 @@
+<div class="app-container">
+  <header class="elegant-header">
+    <div class="logo">
+      <h1>{{ title }}</h1>
+    </div>
+    
+    <nav class="nav-menu">
+      <a mat-button routerLink="/dashboard" routerLinkActive="active-link">
+        Dashboard
+      </a>
+      <a mat-button routerLink="/categorias" routerLinkActive="active-link">
+        Categorías
+      </a>
+      <a mat-button routerLink="/productos" routerLinkActive="active-link">
+        Productos
+      </a>
+      <a mat-button routerLink="/movimientos" routerLinkActive="active-link">
+        Movimientos
+      </a>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

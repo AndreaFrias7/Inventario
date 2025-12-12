@@ -1,0 +1,87 @@
+<h2 mat-dialog-title>Registrar Movimiento de Stock</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="movimientoForm">
+    
+    <mat-form-field class="full-width">
+      <mat-label>Producto</mat-label>
+      <mat-select formControlName="productoId">
+        <mat-option *ngFor="let producto of productos" [value]="producto.id">
+          {{ producto.nombre }} (Stock: {{ producto.stockActual }})
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="movimientoForm.get('productoId')?.hasError('required')">
+        El producto es obligatorio
+      </mat-error>
+    </mat-form-field>
+
+    <div *ngIf="productoSeleccionado" class="producto-info">
+      <mat-icon>info</mat-icon>
+      <div>
+        <strong>Stock actual: {{ productoSeleccionado.stockActual }}</strong>
+        <br>
+        <span>Categoría: {{ productoSeleccionado.categoriaNombre }}</span>
+      </div>
+    </div>
+
+    <div class="tipo-movimiento">
+      <label>Tipo de Movimiento:</label>
+      <mat-radio-group formControlName="tipo" class="radio-group">
+        <mat-radio-button value="ENTRADA" color="primary">
+          <mat-icon>arrow_downward</mat-icon> Entrada
+        </mat-radio-button>
+        <mat-radio-button value="SALIDA" color="warn">
+          <mat-icon>arrow_upward</mat-icon> Salida
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <mat-form-field class="full-width">
+      <mat-label>Cantidad</mat-label>
+      <input matInput type="number" formControlName="cantidad" placeholder="1" min="1">
+      <mat-error *ngIf="movimientoForm.get('cantidad')?.hasError('required')">
+        La cantidad es obligatoria
+      </mat-error>
+      <mat-error *ngIf="movimientoForm.get('cantidad')?.hasError('min')">
+        La cantidad debe ser mayor a 0
+      </mat-error>
+    </mat-form-field>
+
+    <div *ngIf="productoSeleccionado && movimientoForm.get('cantidad')?.valid" 
+         class="preview-resultado"
+         [class.entrada]="movimientoForm.get('tipo')?.value === 'ENTRADA'"
+         [class.salida]="movimientoForm.get('tipo')?.value === 'SALIDA'">
+      <mat-icon>calculate</mat-icon>
+      <div>
+        <strong>Nuevo stock:</strong>
+        <span *ngIf="movimientoForm.get('tipo')?.value === 'ENTRADA'">
+          {{ productoSeleccionado.stockActual + movimientoForm.get('cantidad')?.value }}
+        </span>
+        <span *ngIf="movimientoForm.get('tipo')?.value === 'SALIDA'">
+          {{ productoSeleccionado.stockActual - movimientoForm.get('cantidad')?.value }}
+        </span>
+      </div>
+    </div>
+
+    <mat-form-field class="full-width">
+      <mat-label>Motivo (opcional)</mat-label>
+      <textarea matInput formControlName="motivo" rows="3" 
+                placeholder="Ej: Compra, Venta, Devolución, Ajuste de inventario"></textarea>
+      <mat-error *ngIf="movimientoForm.get('motivo')?.hasError('maxlength')">
+        Máximo 200 caracteres
+      </mat-error>
+    </mat-form-field>
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-raised-button 
+          [color]="movimientoForm.get('tipo')?.value === 'ENTRADA' ? 'primary' : 'warn'"
+          (click)="onSubmit()" 
+          [disabled]="!movimientoForm.valid">
+    <mat-icon>{{ movimientoForm.get('tipo')?.value === 'ENTRADA' ? 'add_circle' : 'remove_circle' }}</mat-icon>
+    Registrar {{ movimientoForm.get('tipo')?.value === 'ENTRADA' ? 'Entrada' : 'Salida' }}
+  </button>
+</mat-dialog-actions>

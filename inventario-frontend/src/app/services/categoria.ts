@@ -1,0 +1,41 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Categoria } from '../models/categoria';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CategoriaService {
+  private apiUrl = 'http://localhost:8080/api/categorias';
+
+  constructor(private http: HttpClient) { }
+
+  listar(): Observable<Categoria[]> {
+    return this.http.get<Categoria[]>(this.apiUrl);
+  }
+
+  listarPaginado(filtro: string = '', page: number = 0, size: number = 10): Observable<any> {
+    const params = new HttpParams()
+      .set('filtro', filtro)
+      .set('page', page.toString())
+      .set('size', size.toString());
+    return this.http.get<any>(`${this.apiUrl}/page`, { params });
+  }
+
+  buscarPorId(id: number): Observable<Categoria> {
+    return this.http.get<Categoria>(`${this.apiUrl}/${id}`);
+  }
+
+  crear(categoria: Categoria): Observable<Categoria> {
+    return this.http.post<Categoria>(this.apiUrl, categoria);
+  }
+
+  actualizar(id: number, categoria: Categoria): Observable<Categoria> {
+    return this.http.put<Categoria>(`${this.apiUrl}/${id}`, categoria);
+  }
+
+  eliminar(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+}
